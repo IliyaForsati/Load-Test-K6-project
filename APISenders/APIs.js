@@ -6,3 +6,6 @@ export * as Order from './OrderAPIs.js';
 
 // OrderRevision
 export * as OrderRevision from './OrderRevisionAPIs.js';
+
+// UserSecuritySetupTemp
+export * as UserSecuritySetupTemp from './UserSecuritySetupTempAPIs.js';
