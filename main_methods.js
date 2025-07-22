@@ -20,7 +20,7 @@ export function getToken() {
         if (res.status === 200) {
             token = JSON.parse(res.body).token;
         } else {
-            logger();
+            console.log(res);
             throw new Error("can not login with user: " + getCurrentUser() + `(${res.status})`);
         }
     }
