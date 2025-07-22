@@ -14,6 +14,8 @@ export const options = {
 // main func
 export default function () {
   try {
+    APIs.UserSecuritySetupTemp.AssignRights_put_req(url);
+
     const getAllRes = APIs.Order.getAllSummary_post_Req(url);
 
     const orderNoList = JSON.parse(getAllRes.body).model.gridData.data.map(row => row[0]);

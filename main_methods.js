@@ -57,7 +57,19 @@ export function sendRequest(reqJsonTemplate, variables, body = null) {
     const headers = reqJson.headers || {};
     
     const hasBody = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method);
-    const payload = hasBody ? ((body === null) ? encoding.b64decode(reqJson.data) : body) : undefined;
+    
+    const payload = hasBody 
+        ? ((body === null) 
+            ? (() => { 
+                try {
+                    return encoding.b64decode(reqJson.data);
+                } catch {
+                    return reqJson.data;
+                }
+            })()
+            : body
+        ) 
+        : undefined;
 
     switch (method) {
         case 'GET':
@@ -118,5 +130,5 @@ function AddToOutput(res) {
     output.push(message);
 }
 export function logger() {
-    console.log("\n" + output.join("\n") + "\n");
+    console.log("\n" + output.join("\n") + "\n\n----------");
 }
