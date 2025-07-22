@@ -1,13 +1,13 @@
 import * as APIs from './APISenders/APIs.js';
 import { randomInt } from './util.js';
-import { getCurrentUser } from './main_methods.js';
+import { getCurrentUser, logger } from './main_methods.js';
 
 export const url = "http://rentx.npgnasr.com";
 
 // set up
 export const options = {
-  vus: 4,
-  iterations: 4,
+  vus: 5,
+  iterations: 5,
   duration: '5m',
 };
 
@@ -22,6 +22,6 @@ export default function () {
   const getRecNumRes = APIs.Order.getRecNo_get_req(url, randomRecNo);
 
   const _POSTRes = APIs.OrderRevision._post_req(url, randomRecNo);
-
-  console.log(`${getCurrentUser().padEnd(12)} => getAllSummary(${getAllRes.status}) , getRecNo(${getRecNumRes.status}), _POST(${_POSTRes.status})`);
+  
+  logger();
 }
