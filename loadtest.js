@@ -19,7 +19,10 @@ export default function () {
   const getAllRes = APIs.Order.getAllSummaryReq(url);
   const orderNoList = JSON.parse(getAllRes.body).model.gridData.data.map(row => row[0]);
 
-  const getRecNumRes = APIs.Order.getRecNo(url, randomInt(orderNoList.length));
+  const randomRecNo = randomInt(orderNoList.length)
+  const getRecNumRes = APIs.Order.getRecNo(url, randomRecNo);
 
-  console.log(`${getCurrentUser().padEnd(16)} => login(${loginRes.status}) , getAllSummary(${getAllRes.status}) , getRecNo(${getRecNumRes.status})`);
+  const _POSTRec = APIs.OrderRevision._Post(url, randomRecNo);
+
+  console.log(`${getCurrentUser().padEnd(16)} => login(${loginRes.status}) , getAllSummary(${getAllRes.status}) , getRecNo(${getRecNumRes.status}), _POST(${_POSTRec.status})`);
 }
