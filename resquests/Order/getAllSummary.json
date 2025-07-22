@@ -1,0 +1,32 @@
+{
+    "url": "{{base_url}}/api/order/getAllSummary",
+    "raw_url": "{{base_url}}/api/order/getAllSummary",
+    "method": "post",
+    "cookies": {
+        "sessionStarted": "true"
+    },
+    "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9,fa;q=0.8",
+        "Authorization": "Bearer {{token}}",
+        "ClientTimeZone": "210",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "DeviceType": "desktop",
+        "HubId": "gh5DAFWQjln1zgZMKQZIxQ==",
+        "Language": "ENGLISH",
+        "Location": "ANAHEIM",
+        "Origin": "{{base_url}}",
+        "Referer": "{{base_url}}/order?bodyFilters=true&orderType%5B0%5D=quote&orderType%5B1%5D=order&rentalsSales=3&filterByUser=false&history=false",
+        "Region": "Asia/Tehran",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        "WorkstationID": "1516722536",
+        "X-Frame-Options": "DENY",
+        "appInstanceId": "23988827-279e-44a9-b001-3e5b6a7cd341",
+        "delayedApiKey": "647e6ef2-f22d-4a3d-9225-8b4b976eb02e",
+        "doNotHandleAlertMessage": "true",
+        "Cookie": "sessionStarted=true"
+    },
+    "data": "eyJlbnRpdHlGaWx0ZXJzIjp7Im9yZGVyVHlwZSI6WyJxdW90ZSIsIm9yZGVyIl0sInJlbnRhbHNTYWxlcyI6MywiZmlsdGVyQnlVc2VyIjoiZmFsc2UiLCJoaXN0b3J5IjpmYWxzZX19",
+    "insecure": false
+}
