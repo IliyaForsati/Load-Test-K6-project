@@ -1,7 +1,3 @@
-export function randomInt(min = 0, max) {
-    const num = Math.random();
-
-    const randomInt = Math.floor(num * max) + min;
-
-    return randomInt;
+export function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
 }
