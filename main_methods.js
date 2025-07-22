@@ -20,7 +20,6 @@ export function getToken() {
         if (res.status === 200) {
             token = JSON.parse(res.body).token;
         } else {
-            console.log(res);
             throw new Error("can not login with user: " + getCurrentUser() + `(${res.status})`);
         }
     }
@@ -108,12 +107,12 @@ function AddToOutput(res) {
 
         try {
             const body = res?.body ? JSON.parse(res.body) : {};
-            errorSummary = body?.message || body?.error || 'Unknown error';
+            errorSummary = JSON.stringify(body?.messages, null, 2);
         } catch (e) {
             errorSummary = 'Response is not valid JSON';
         }
 
-        message = `${url} => status = ${status} | error: ${errorSummary}`;
+        message = `${url} => status = ${status} | error: \n${errorSummary} \n`;
     }
 
     output.push(message);

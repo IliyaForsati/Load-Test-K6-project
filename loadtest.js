@@ -1,6 +1,6 @@
 import * as APIs from './APISenders/APIs.js';
 import { randomInt } from './util.js';
-import { getCurrentUser, logger } from './main_methods.js';
+import { logger } from './main_methods.js';
 
 export const url = "http://192.168.1.54:8051";
 
@@ -25,7 +25,7 @@ export default function () {
     const _POSTRes = APIs.OrderRevision._post_req(url, randomRecNo);
   }
   catch (err) {
-    console.error(err);
+    console.error(err.toString());
   }
 
   logger();
