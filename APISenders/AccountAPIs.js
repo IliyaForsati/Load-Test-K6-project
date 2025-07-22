@@ -2,7 +2,7 @@ import * as funcs from '../funcs.js'
 import * as JSONFiles from '../resquests/index.js'
 
 // POST: api/Account/login
-export function loginReq(url) {
+export function login_post_Req(url) {
     const variables = {
         base_url: url
     };
@@ -14,7 +14,7 @@ export function loginReq(url) {
       isDashboard: false,
     });
 
-    const res = funcs.sendRequest(JSONFiles.login, variables, body);
+    const res = funcs.sendRequest(JSONFiles.login_post, variables, body);
 
     funcs.setToken(JSON.parse(res.body).token);
     
