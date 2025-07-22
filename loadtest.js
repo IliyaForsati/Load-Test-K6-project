@@ -25,7 +25,7 @@ export default function () {
     const _POSTRes = APIs.OrderRevision._post_req(url, randomRecNo);
   }
   catch (err) {
-    console.log(err);
+    console.error(err);
   }
 
   logger();
