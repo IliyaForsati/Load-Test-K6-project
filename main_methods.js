@@ -1,18 +1,27 @@
+// k6 imports
 import csv from 'k6/experimental/csv';
 import http from 'k6/http';
 import { open } from 'k6/experimental/fs';
 import encoding from 'k6/encoding';
 
-import { options } from './loadtest.js';
+// other imports
+import * as APIs from './APISenders/APIs.js';
+import {url} from './loadtest.js';
 
 const file = await open('data.csv');
 const csvRecords = await csv.parse(file, { delimiter: ',' });
 
-export let token = ""; 
-export function setToken(newToken) {
-    token = newToken;
-}
+let token = "";
+export function getToken() {
+    if (token === "") {
+        const res = APIs.Account.login_post_Req(url);
 
+        if (res.status === 200) 
+            token = JSON.parse(res.body).token;
+    }
+
+    return token;
+}
 
 export function getAllUsers() {
     return csvRecords.map(row => row[0]);

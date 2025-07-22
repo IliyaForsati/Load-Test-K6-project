@@ -1,11 +1,11 @@
-import * as funcs from '../funcs.js'
+import * as funcs from '../main_methods.js'
 import * as JSONFiles from '../resquests/index.js'
 
 // POST: api/Order/GetAllSummary
 export function getAllSummary_post_Req(url) {
     const variables = {
         base_url: url,
-        token: funcs.token,
+        token: funcs.getToken(),
     };
 
     const res = funcs.sendRequest(JSONFiles.getAllSummary_post, variables);
@@ -17,7 +17,7 @@ export function getAllSummary_post_Req(url) {
 export function getRecNo_get_req(url, recNo) {
     const variables = {
         base_url: url,
-        token: funcs.token,
+        token: funcs.getToken(),
         recNo: recNo,
     };
 

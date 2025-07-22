@@ -1,4 +1,4 @@
-import * as funcs from '../funcs.js'
+import * as funcs from '../main_methods.js'
 import * as JSONFiles from '../resquests/index.js'
 
 // POST: api/Account/login
@@ -15,8 +15,6 @@ export function login_post_Req(url) {
     });
 
     const res = funcs.sendRequest(JSONFiles.login_post, variables, body);
-
-    funcs.setToken(JSON.parse(res.body).token);
     
     return res;
 }
