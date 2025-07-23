@@ -29,7 +29,7 @@
     },
     "data": {
         "toUser": "{{username}}",
-        "fromUser": "",
+        "fromUser": "{{username}}",
         "mode": "AllRS"
     },
     "insecure": false

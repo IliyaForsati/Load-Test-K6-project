@@ -113,7 +113,7 @@ function AddToOutput(res) {
     let message = '';
 
     if (status === 200) {
-        message = `${url.padEnd(40)} => status = 200`;
+        message = `${getCurrentUser().padEnd(12)}:  ${url.padEnd(40)} => status = 200`;
     } else {
         let errorSummary = '';
 
@@ -124,7 +124,7 @@ function AddToOutput(res) {
             errorSummary = 'Response is not valid JSON';
         }
 
-        message = `${url} => status = ${status} | error: \n${errorSummary} \n`;
+        message = `${getCurrentUser().padEnd(12)}:  ${url.padEnd(40)} => status = ${status} | error: \n${errorSummary} \n`;
     }
 
     output.push(message);
