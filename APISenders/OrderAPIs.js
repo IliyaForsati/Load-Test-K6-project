@@ -21,7 +21,7 @@ export function getRecNo_get_req(url, recNo) {
         recNo: recNo,
     };
 
-    const res = funcs.sendRequest(JSONFiles.getAllSummary_post, variables);
+    const res = funcs.sendRequest(JSONFiles.recNo_post, variables);
 
     return res;
 }

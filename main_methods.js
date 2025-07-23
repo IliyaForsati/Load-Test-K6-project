@@ -131,4 +131,5 @@ function AddToOutput(res) {
 }
 export function logger() {
     console.log("\n" + output.join("\n") + "\n\n----------");
+    output.length = 0;
 }

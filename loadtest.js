@@ -7,20 +7,18 @@ export const url = "http://192.168.1.54:8051";
 // set up
 export const options = {
   vus: 5,
-  iterations: 5,
+  // iterations: 5,
   duration: '5m',
 };
 
 // main func
 export default function () {
   try {
-    APIs.UserSecuritySetupTemp.AssignRights_put_req(url);
-
     const getAllRes = APIs.Order.getAllSummary_post_Req(url);
 
     const orderNoList = JSON.parse(getAllRes.body).model.gridData.data.map(row => row[0]);
 
-    const randomRecNo = randomInt(0, orderNoList.length);
+    const randomRecNo = orderNoList[randomInt(0, orderNoList.length)];
 
     const getRecNumRes = APIs.Order.getRecNo_get_req(url, randomRecNo);
 
