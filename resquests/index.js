@@ -1,3 +1,8 @@
+/**
+ * in this file, read all json file that are APIs.
+ * APISenders use this file to access json files
+ */
+
 // Account
 export const Account_login_post = JSON.parse(open('./Account/login_post.json'));
 

@@ -1,3 +1,9 @@
+/**
+ * all apisenders export here and in main files like loadtest.js use this file to 
+ * access api senders.
+ * like  APIs.Order.getAllSummary_post_req()
+ */
+
 // Account
 export * as Account from './AccountAPIs.js';
 

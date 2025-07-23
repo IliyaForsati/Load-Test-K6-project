@@ -8,11 +8,17 @@ import encoding from 'k6/encoding';
 import * as APIs from './APISenders/APIs.js';
 import {url} from './loadtest.js';
 
+// read csv file and find username.
+// in this site all password <hd>, but you can save password in csv file too
 const file = await open('USERS.csv');
 const csvRecords = (await csv.parse(file, { delimiter: ',' })).slice(1);
 
+
 let token = "";
-const max_login_retry = 5;
+/**
+ * this method return valid token, and send login request if needed.
+ * @returns {String}
+ */
 export function getToken() {
     if (token === "") {
         const res = APIs.Account.login_post_Req(url);
@@ -35,6 +41,12 @@ export function getCurrentUser() {
     return csvRecords[__VU - 1][0];
 }
 
+/**
+ * this method replace variable in JSON object.
+ * @param {Object} jsonObj 
+ * @param {Object} variables 
+ * @returns 
+ */
 function replaceJsonVariables(jsonObj, variables) {
     const jsonString = JSON.stringify(jsonObj);
 
@@ -50,6 +62,13 @@ function replaceJsonVariables(jsonObj, variables) {
     return JSON.parse(newJsonStr);
 }
 
+/**
+ * send request according to JSON file.
+ * @param {Object} reqJsonTemplate 
+ * @param {Object} variables 
+ * @param {String} body 
+ * @returns 
+ */
 export function sendRequest(reqJsonTemplate, variables, body = null) {
     const reqJson = replaceJsonVariables(reqJsonTemplate, variables);
 
@@ -103,6 +122,10 @@ export function sendRequest(reqJsonTemplate, variables, body = null) {
 }
 
 const output = [];
+/**
+ * create output string.
+ * @param {object} res 
+ */
 function AddToOutput(res) {
     const fullUrl = res?.request?.url || 'unknown url';
     const url = fullUrl.includes('/api/')
@@ -129,6 +152,9 @@ function AddToOutput(res) {
 
     output.push(message);
 }
+/**
+ * this methods show results of all requests that current __VU sent in this round.
+ */
 export function logger() {
     if (output.length > 0 && output[0] != '') {
         console.log("\n" + output.join("\n") + "\n\n----------");
