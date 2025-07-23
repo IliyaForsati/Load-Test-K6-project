@@ -130,6 +130,8 @@ function AddToOutput(res) {
     output.push(message);
 }
 export function logger() {
-    console.log("\n" + output.join("\n") + "\n\n----------");
-    output.length = 0;
+    if (output.length > 0 && output[0] != '') {
+        console.log("\n" + output.join("\n") + "\n\n----------");
+        output.length = 0;
+    }
 }

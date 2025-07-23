@@ -9,3 +9,6 @@ export * as OrderRevision from './OrderRevisionAPIs.js';
 
 // UserSecuritySetupTemp
 export * as UserSecuritySetupTemp from './UserSecuritySetupTempAPIs.js';
+
+// MainMenuDevelopment
+export * as MainMenuDevelopment from './MainMenuDevelopmentAPIs.js';

@@ -9,7 +9,7 @@ export function AssignRights_put_req(url) {
         username: funcs.getCurrentUser(),
     };
 
-    const res = funcs.sendRequest(JSONFiles.AssignRights_put, variables);
+    const res = funcs.sendRequest(JSONFiles.UserSecuritySetupTemp_AssignRights_put, variables);
 
     return res;
 }

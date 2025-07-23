@@ -14,7 +14,7 @@ export function _post_req(url, recNo) {
         saveRevision: true,
     });
 
-    const res = funcs.sendRequest(JSONFiles._post, variables, body);
+    const res = funcs.sendRequest(JSONFiles.OrderRevision__post, variables, body);
 
     return res;
 }

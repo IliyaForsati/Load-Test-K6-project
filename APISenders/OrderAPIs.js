@@ -8,7 +8,7 @@ export function getAllSummary_post_Req(url) {
         token: funcs.getToken(),
     };
 
-    const res = funcs.sendRequest(JSONFiles.getAllSummary_post, variables);
+    const res = funcs.sendRequest(JSONFiles.Order_getAllSummary_post, variables);
 
     return res;
 }
@@ -21,7 +21,7 @@ export function getRecNo_get_req(url, recNo) {
         recNo: recNo,
     };
 
-    const res = funcs.sendRequest(JSONFiles.recNo_post, variables);
+    const res = funcs.sendRequest(JSONFiles.Order_recNo_post, variables);
 
     return res;
 }

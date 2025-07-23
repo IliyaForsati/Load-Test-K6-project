@@ -14,7 +14,7 @@ export function login_post_Req(url) {
       isDashboard: false,
     });
 
-    const res = funcs.sendRequest(JSONFiles.login_post, variables, body);
+    const res = funcs.sendRequest(JSONFiles.Account_login_post, variables, body);
     
     return res;
 }
