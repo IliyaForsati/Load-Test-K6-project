@@ -1,17 +1,11 @@
 // k6 imports
-import csv from 'k6/experimental/csv';
 import http from 'k6/http';
-import { open } from 'k6/experimental/fs';
 import encoding from 'k6/encoding';
 
 // other imports
 import * as APIs from './APISenders/APIs.js';
 import {url} from './loadtest.js';
 
-// read csv file and find username.
-// in this site all password <hd>, but you can save password in csv file too
-const file = await open('USERS.csv');
-const csvRecords = (await csv.parse(file, { delimiter: ',' })).slice(1);
 
 
 let token = "";
@@ -33,12 +27,24 @@ export function getToken() {
     return token;
 }
 
+/**
+ * get list of all users with password. from api
+ * @returns list of users and passwords
+ * @example
+ *    [
+ *      {
+ *        "username": "iliya",
+ *        "password": "*****"
+ *      },
+ *      ...
+ *    ]
+ */
 export function getAllUsers() {
-    return csvRecords.map(row => row[0]);
+    
 }
 
 export function getCurrentUser() {
-    return csvRecords[__VU - 1][0];
+    
 }
 
 /**
