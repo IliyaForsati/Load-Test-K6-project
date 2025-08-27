@@ -1,12 +1,42 @@
 // k6 imports
 import http from 'k6/http';
 import encoding from 'k6/encoding';
+import { SharedArray } from "k6/data";
 
 // other imports
 import * as APIs from './APISenders/APIs.js';
 import {url} from './loadtest.js';
+import {script_api} from './loadtest.js';
 
 
+let users = [];
+
+/**
+ * get list of all users with password. from api
+ * @example
+ *    [
+ *      {
+ *        "username": "iliya",
+ *        "password": "*****"
+ *      },
+ *      ...
+ *    ]
+ */
+export function getAllUsers() {
+    let res = http.get(script_api);
+
+    if (res.status !== 200) {
+        throw new Error(`Failed to fetch users: ${res.status}`);
+    }
+
+    let jsonData = JSON.parse(res.body);
+    users = jsonData.usernames; // ["ADMIN", "RTPRO", "CINDY", "BO"]
+    return users;
+}
+export function getCurrentUser() {
+    getAllUsers()
+    return users[(__VU - 1) % users.length]
+}
 
 let token = "";
 /**
@@ -25,26 +55,6 @@ export function getToken() {
     }
 
     return token;
-}
-
-/**
- * get list of all users with password. from api
- * @returns list of users and passwords
- * @example
- *    [
- *      {
- *        "username": "iliya",
- *        "password": "*****"
- *      },
- *      ...
- *    ]
- */
-export function getAllUsers() {
-    
-}
-
-export function getCurrentUser() {
-    
 }
 
 /**
@@ -158,6 +168,7 @@ function AddToOutput(res) {
 
     output.push(message);
 }
+
 /**
  * this methods show results of all requests that current __VU sent in this round.
  */
