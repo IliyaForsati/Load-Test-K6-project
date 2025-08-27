@@ -1,5 +1,4 @@
 import * as APIs from './APISenders/APIs.js';
-import { randomInt } from './util.js';
 import { logger } from './main_methods.js';
 
 export const url = "http://rentex.hd.sl.npgnasr.com";
