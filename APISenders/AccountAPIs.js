@@ -8,7 +8,7 @@ export function login_post_Req(url) {
     };
 
     const body = JSON.stringify({
-      username: funcs.getCurrentUser(),
+      username: "DBATTISTA",
       password: "hd",
       CaptchaCode: null,
       isDashboard: false,

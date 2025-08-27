@@ -18,3 +18,6 @@ export const UserSecuritySetupTemp_AssignRights_put = JSON.parse(open('./UserSec
 
 // MainMenuDevelopment
 export const MainMenuDevelopment__post = JSON.parse(open('./MainMenuDevelopment/_post.json'));
+
+// UserWorkstationSetting
+export const UserWorkstationSettingsUpsert_post = JSON.parse(open('./UserWorkstationSetting/UserWorkstationSettingsUpsert_post.json'));

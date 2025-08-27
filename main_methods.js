@@ -136,7 +136,7 @@ function AddToOutput(res) {
     let message = '';
 
     if (status === 200) {
-        message = `${getCurrentUser().padEnd(12)}:  ${url.padEnd(40)} => status = 200`;
+        message = `${getCurrentUser().padEnd(12)}:  ${url.padEnd(40)} => status = ${status} \n`;
     } else {
         let errorSummary = '';
 

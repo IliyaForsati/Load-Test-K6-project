@@ -18,3 +18,6 @@ export * as UserSecuritySetupTemp from './UserSecuritySetupTempAPIs.js';
 
 // MainMenuDevelopment
 export * as MainMenuDevelopment from './MainMenuDevelopmentAPIs.js';
+
+// UserWorkstationSetting
+export * as UserWorkstationSetting from './UserWorkstationSettingAPIs.js';
