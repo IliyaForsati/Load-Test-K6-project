@@ -20,7 +20,7 @@ export const get_usernames_api = {
 }
 
 export const options = {
-  vus: 1,
+  vus: 50,
   // iterations: 20,
 }
 
@@ -71,7 +71,7 @@ function run_all_apis()
 
   APIs.OrderRevision._post_req(url, randomRecNo)
 
-  APIs.UserSecuritySetupTemp.AssignRights_put_req(url)
+  // APIs.UserSecuritySetupTemp.AssignRights_put_req(url)
 
   APIs.UserWorkstationSetting.UserWorkstationSettingsUpsert_post_req(url)
 }
