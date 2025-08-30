@@ -1,11 +1,12 @@
 from flask import Flask, request
+from flask_caching import Cache
 import pyodbc
+import pandas as pd
 
 app = Flask(__name__)
 
 username = 'rti2'
 password = 'npg3'
-
 
 @app.route('/api/getUsersAndPasswords', methods=["GET"])
 def get_users_and_passwords():
@@ -23,11 +24,13 @@ def get_users_and_passwords():
 
     cursor.execute('''
         UPDATE UserCode
-        set Password = 'b25ffa68ad761f8578cc61700c0140ed'
+        set Password = 'b25ffa68ad761f8578cc61700c0140ed',
+        HashedPassword = NULL
     ''') # md5 for 'hd'
     cursor.execute('''
         SELECT Code FROM UserCode
         WHERE IsProfile = 0
+        AND ForcePWChange = 0
         AND Inactive = 0
     ''')
     rows = cursor.fetchall()
@@ -35,6 +38,15 @@ def get_users_and_passwords():
     conn.close()
 
     return {"usernames": [row.Code for row in rows]}
+
+@Cache.cached()
+@app.route('/api/getDataBases', methods=['GET'])
+def get_databases_and_url():
+    data = pd.read_csv('./servers.csv')
+
+    response = [{"database": data["database"].iloc[i], "base_url": data["base_url"].iloc[i]} for i in range(len(data))]
+    return response
+
 
 if __name__ == '__main__':
     app.run(debug=True) 

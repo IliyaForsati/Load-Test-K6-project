@@ -1,8 +1,8 @@
 import * as APIs from './APISenders/APIs.js';
 import { logger } from './main_methods.js';
 
-export const url = "http://rentex.hd.sl.npgnasr.com";
 
+export const url = "http://rentex.hd.sl.npgnasr.com"
 const database = 'SL-PV-TVCS'
 export const script_api = `http://localhost:5000/api/getUsersAndPasswords?database=${database}`
 
