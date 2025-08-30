@@ -4,6 +4,7 @@ import pyodbc
 import pandas as pd
 
 app = Flask(__name__)
+cache = Cache(app=app, config={"CACHE_TYPE": "SimpleCache", "CACHE_DEFAULT_TIMEOUT": 300})
 
 username = 'rti2'
 password = 'npg3'
@@ -39,7 +40,7 @@ def get_users_and_passwords():
 
     return {"usernames": [row.Code for row in rows]}
 
-@Cache.cached()
+@cache.cached()
 @app.route('/api/getDataBases', methods=['GET'])
 def get_databases_and_url():
     data = pd.read_csv('./servers.csv')

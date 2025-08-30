@@ -1,13 +1,11 @@
 // k6 imports
 import http from 'k6/http';
 import encoding from 'k6/encoding';
-import { SharedArray } from "k6/data";
 
 // other imports
 import * as APIs from './APISenders/APIs.js';
 import {url} from './loadtest.js';
-import {script_api} from './loadtest.js';
-
+import {get_usernames_api} from './loadtest.js';
 
 let users = [];
 
@@ -23,7 +21,7 @@ let users = [];
  *    ]
  */
 export function getAllUsers() {
-    let res = http.get(script_api);
+    let res = http.get(get_usernames_api.get);
 
     if (res.status !== 200) {
         throw new Error(`Failed to fetch users: ${res.status}`);
@@ -55,6 +53,9 @@ export function getToken() {
     }
 
     return token;
+}
+export function refreshToken() {
+    token = ""
 }
 
 /**
