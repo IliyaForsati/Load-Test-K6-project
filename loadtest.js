@@ -21,7 +21,7 @@ export const get_usernames_api = {
 
 export const options = {
   vus: 50,
-  // iterations: 20,
+  iterations: 50,
 }
 
 export function setup() {
